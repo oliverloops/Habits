@@ -1,28 +1,31 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-const HabitCard = () => {
+const HabitCard = ({ title, days, icon, color }) => {
   return (
-    <>
-      <View style={styles.emojiBox}>
-        <Text
-          style={{
-            fontSize: 26,
-            textAlign: "center",
-            textAlignVertical: "center",
-          }}
-        >
-          ⛰️
-        </Text>
-      </View>
-      <View style={styles.contentBox}>
-        <Text style={styles.titleBox}>Escalada</Text>
-        <Text style={styles.subtitleBox}>
-          <Text style={{ fontSize: 16, fontWeight: "800" }}>3</Text> dias
-        </Text>
-      </View>
-      <View style={styles.shadowBox}></View>
-    </>
+    <View style={{ marginLeft: 16 }}>
+      <TouchableOpacity>
+        <View style={[styles.emojiBox, { backgroundColor: color }]}>
+          <Text
+            style={{
+              fontSize: 26,
+              marginTop: 2,
+              textAlign: "center",
+              textAlignVertical: "center",
+            }}
+          >
+            {icon}
+          </Text>
+        </View>
+        <View style={styles.contentBox}>
+          <Text style={styles.titleBox}>{title}</Text>
+          <Text style={styles.subtitleBox}>
+            <Text style={{ fontSize: 16, fontWeight: "800" }}>{days}</Text> dias
+          </Text>
+        </View>
+        <View style={[styles.shadowBox, { backgroundColor: color }]}></View>
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -38,7 +41,6 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   shadowBox: {
-    backgroundColor: "hsl(97, 96%, 84%)",
     marginTop: 7,
     marginLeft: 7,
     borderWidth: 3,
@@ -48,7 +50,6 @@ const styles = StyleSheet.create({
     zIndex: 0,
   },
   emojiBox: {
-    backgroundColor: "hsl(97, 96%, 84%)",
     marginTop: -10,
     marginLeft: -8,
     borderWidth: 3,

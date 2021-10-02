@@ -1,12 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, Button, Image } from "react-native";
+import { View, Text, StyleSheet, Button, Image, FlatList } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 //UI components
 import HabitCard from "./components/HabitCard";
 import image from "./images/placeful_place.png";
 
 const App = () => {
   return (
-    <>
+    <NavigationContainer>
       <View style={styles.main}>
         <HabitButton />
         <Text style={styles.mainText}>Hábitos</Text>
@@ -24,7 +25,7 @@ const App = () => {
           </View>
         </View>
       </View>
-    </>
+    </NavigationContainer>
   );
 };
 
@@ -37,14 +38,49 @@ const HabitButton = () => {
 };
 
 const CardsContainer = () => {
+  let habits = [
+    {
+      title: "Escalada",
+      days: 5,
+      icon: "⛰️",
+      color: "hsl(97, 96%, 84%)",
+    },
+    {
+      title: "Lectura",
+      days: 9,
+      icon: "📖",
+      color: "hsl(264, 85%, 85%)",
+    },
+    {
+      title: "Pilates",
+      days: 12,
+      icon: "💪",
+      color: "hsl(201, 90%, 77%)",
+    },
+    {
+      title: "Fránces",
+      days: 4,
+      icon: "🇫🇷",
+      color: "hsl(56, 85%, 75%)",
+    },
+  ];
+
   return (
     <View style={styles.habitCardsContainer}>
-      <View>
-        <HabitCard />
-      </View>
-      <View style={{ marginLeft: 20 }}>
-        <HabitCard />
-      </View>
+      <FlatList
+        horizontal={true}
+        data={habits}
+        renderItem={({ item, id }) => (
+          <View style={{ marginTop: 10 }} key={id}>
+            <HabitCard
+              title={item.title}
+              days={item.days}
+              icon={item.icon}
+              color={item.color}
+            />
+          </View>
+        )}
+      />
     </View>
   );
 };
@@ -77,7 +113,7 @@ const styles = StyleSheet.create({
   subText: {
     fontSize: 24,
     fontWeight: "800",
-    marginTop: 5,
+    marginTop: 7,
   },
   placeHolderImage: {
     width: 300,
