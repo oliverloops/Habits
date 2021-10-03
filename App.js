@@ -43,7 +43,7 @@ const App = () => {
           name="Form"
           component={Form}
           options={{
-            title: "Nuevo Hábito",
+            title: "Añadir Hábito",
             headerStyle: {
               backgroundColor: "hsl(357, 5%, 97%)",
             },
@@ -57,7 +57,7 @@ const App = () => {
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.main}>
-      <HabitButton />
+      <HabitButton navigation={navigation} />
       <Text style={styles.mainText}>Hábitos</Text>
       <CardsContainer navigation={navigation} />
       <View style={styles.subTextContainer}>
@@ -76,10 +76,13 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-const HabitButton = () => {
+const HabitButton = ({ navigation }) => {
   return (
     <View style={styles.habitButtonTop}>
-      <Button title={"Nuevo Hábito +"} />
+      <Button
+        title={"Nuevo Hábito +"}
+        onPress={() => navigation.navigate("Form")}
+      />
     </View>
   );
 };
