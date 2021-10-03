@@ -3,7 +3,12 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 const HabitCard = ({ title, days, icon, color, navigation }) => {
   const navigate = () => {
-    navigation.navigate("Habit", { pageTitle: title });
+    navigation.navigate("Habit", {
+      pageTitle: title,
+      time: days,
+      icon: icon,
+      color: color,
+    });
   };
 
   return (

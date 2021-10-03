@@ -7,6 +7,7 @@ import HabitCard from "./components/HabitCard";
 import image from "./images/placeful_place.png";
 //View components
 import HabitScreen from "./habit";
+import Form from "./form";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +34,16 @@ const App = () => {
           component={HabitScreen}
           options={{
             title: "Actividad",
+            headerStyle: {
+              backgroundColor: "hsl(357, 5%, 97%)",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Form"
+          component={Form}
+          options={{
+            title: "Nuevo Hábito",
             headerStyle: {
               backgroundColor: "hsl(357, 5%, 97%)",
             },
