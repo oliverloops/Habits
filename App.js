@@ -46,13 +46,13 @@ const CardsContainer = () => {
       color: "hsl(97, 96%, 84%)",
     },
     {
-      title: "Lectura",
+      title: "Lectura Diaria",
       days: 9,
       icon: "📖",
       color: "hsl(264, 85%, 85%)",
     },
     {
-      title: "Pilates",
+      title: "Hacer Pilates",
       days: 12,
       icon: "💪",
       color: "hsl(201, 90%, 77%)",
@@ -62,6 +62,12 @@ const CardsContainer = () => {
       days: 4,
       icon: "🇫🇷",
       color: "hsl(56, 85%, 75%)",
+    },
+    {
+      title: "Cocinar",
+      days: 7,
+      icon: "🥗",
+      color: "hsl(299, 69%, 84%)",
     },
   ];
 

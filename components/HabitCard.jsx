@@ -18,7 +18,9 @@ const HabitCard = ({ title, days, icon, color }) => {
           </Text>
         </View>
         <View style={styles.contentBox}>
-          <Text style={styles.titleBox}>{title}</Text>
+          <View style={{ height: 100, width: 400 }}>
+            <Text style={styles.titleBox}>{title}</Text>
+          </View>
           <Text style={styles.subtitleBox}>
             <Text style={{ fontSize: 16, fontWeight: "800" }}>{days}</Text> dias
           </Text>
@@ -28,6 +30,8 @@ const HabitCard = ({ title, days, icon, color }) => {
     </View>
   );
 };
+
+export default HabitCard;
 
 const styles = StyleSheet.create({
   contentBox: {
@@ -65,12 +69,12 @@ const styles = StyleSheet.create({
     marginTop: 45,
     marginLeft: 10,
     marginRight: 10,
+    marginBottom: 20,
+    maxHeight: 60,
   },
   subtitleBox: {
     fontSize: 14,
-    marginTop: 50,
     marginRight: 15,
     textAlign: "right",
   },
 });
-export default HabitCard;
