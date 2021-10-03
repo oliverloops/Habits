@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 const HabitCard = ({ title, days, icon, color }) => {
   return (
-    <View style={{ marginLeft: 16 }}>
+    <View style={{ marginLeft: 25 }}>
       <TouchableOpacity>
         <View style={[styles.emojiBox, { backgroundColor: color }]}>
           <Text
@@ -18,7 +18,7 @@ const HabitCard = ({ title, days, icon, color }) => {
           </Text>
         </View>
         <View style={styles.contentBox}>
-          <View style={{ height: 100, width: 400 }}>
+          <View style={{ height: 120, width: 120 }}>
             <Text style={styles.titleBox}>{title}</Text>
           </View>
           <Text style={styles.subtitleBox}>
@@ -64,13 +64,14 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   titleBox: {
-    fontSize: 21,
+    fontSize: 20,
     fontWeight: "800",
     marginTop: 45,
     marginLeft: 10,
-    marginRight: 10,
+    marginRight: 21,
     marginBottom: 20,
     maxHeight: 60,
+    textAlign: "justify",
   },
   subtitleBox: {
     fontSize: 14,

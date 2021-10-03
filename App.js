@@ -52,7 +52,7 @@ const CardsContainer = () => {
       color: "hsl(264, 85%, 85%)",
     },
     {
-      title: "Hacer Pilates",
+      title: "Realizar Pilates",
       days: 12,
       icon: "💪",
       color: "hsl(201, 90%, 77%)",
@@ -97,29 +97,35 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
     marginTop: "12%",
-    marginLeft: "5%",
-    marginRight: "5%",
   },
   mainText: {
     fontSize: 32,
     fontWeight: "800",
     marginTop: 10,
+    marginLeft: "5%",
+    marginRight: "5%",
   },
   habitButtonTop: {
     flexDirection: "row-reverse",
+    marginLeft: "5%",
+    marginRight: "5%",
   },
   habitCardsContainer: {
-    flex: 1.1,
+    flex: 1.15,
     flexDirection: "row",
     marginTop: 23,
   },
   subTextContainer: {
     flex: 3,
+    marginLeft: "5%",
+    marginRight: "5%",
   },
   subText: {
     fontSize: 24,
     fontWeight: "800",
     marginTop: 7,
+    marginLeft: "5%",
+    marginRight: "5%",
   },
   placeHolderImage: {
     width: 300,
