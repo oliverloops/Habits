@@ -2,9 +2,13 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 const HabitCard = ({ title, days, icon, color, navigation }) => {
+  const navigate = () => {
+    navigation.navigate("Habit", { pageTitle: title });
+  };
+
   return (
     <View style={{ marginLeft: 25 }}>
-      <TouchableOpacity onPress={() => navigation.navigate("Habit")}>
+      <TouchableOpacity onPress={navigate}>
         <View style={[styles.emojiBox, { backgroundColor: color }]}>
           <Text
             style={{

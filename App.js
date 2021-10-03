@@ -5,30 +5,63 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 //UI components
 import HabitCard from "./components/HabitCard";
 import image from "./images/placeful_place.png";
+//View components
+import HabitScreen from "./habit";
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <View style={styles.main}>
-        <HabitButton />
-        <Text style={styles.mainText}>Hábitos</Text>
-        <CardsContainer />
-        <View style={styles.subTextContainer}>
-          <Text style={styles.subText}>Recientes</Text>
-          <View>
-            <Image style={styles.placeHolderImage} source={image} />
-            <Text style={{ textAlign: "center", fontWeight: "600" }}>
-              Comienza un hábito
-            </Text>
-            <Text style={{ textAlign: "center", fontWeight: "600" }}>
-              seleccionando uno de los que has creado
-            </Text>
-          </View>
+      <Stack.Navigator
+        initialRouteName="Home"
+        style={{ backgroundColor: "transparent" }}
+      >
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            title: "Actividades",
+            headerStyle: {
+              backgroundColor: "transparent",
+            },
+            headerTintColor: "transparent",
+          }}
+        />
+        <Stack.Screen
+          name="Habit"
+          component={HabitScreen}
+          options={{
+            title: "Actividad",
+            headerStyle: {
+              backgroundColor: "hsl(357, 5%, 97%)",
+            },
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+const HomeScreen = ({ navigation }) => {
+  return (
+    <View style={styles.main}>
+      <HabitButton />
+      <Text style={styles.mainText}>Hábitos</Text>
+      <CardsContainer navigation={navigation} />
+      <View style={styles.subTextContainer}>
+        <Text style={styles.subText}>Recientes</Text>
+        <View>
+          <Image style={styles.placeHolderImage} source={image} />
+          <Text style={{ textAlign: "center", fontWeight: "600" }}>
+            Comienza un hábito
+          </Text>
+          <Text style={{ textAlign: "center", fontWeight: "600" }}>
+            seleccionando uno de los que has creado
+          </Text>
         </View>
       </View>
-    </NavigationContainer>
+    </View>
   );
 };
 
@@ -100,7 +133,7 @@ export default App;
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    marginTop: "12%",
+    backgroundColor: "#fff",
   },
   mainText: {
     fontSize: 32,
@@ -121,13 +154,13 @@ const styles = StyleSheet.create({
   },
   subTextContainer: {
     flex: 3,
-    marginLeft: "5%",
+    marginLeft: "2%",
     marginRight: "5%",
   },
   subText: {
     fontSize: 24,
     fontWeight: "800",
-    marginTop: 7,
+    marginTop: 12,
     marginLeft: "5%",
     marginRight: "5%",
   },
@@ -135,7 +168,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 220,
     marginTop: 50,
-    marginLeft: "5%",
+    marginLeft: "10%",
     marginBottom: 10,
     borderRadius: 100,
   },
