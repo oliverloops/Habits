@@ -1,9 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet, Button, Image, FlatList } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 //UI components
 import HabitCard from "./components/HabitCard";
 import image from "./images/placeful_place.png";
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
@@ -37,7 +40,7 @@ const HabitButton = () => {
   );
 };
 
-const CardsContainer = () => {
+const CardsContainer = ({ navigation }) => {
   let habits = [
     {
       title: "Escalada",
@@ -83,6 +86,7 @@ const CardsContainer = () => {
               days={item.days}
               icon={item.icon}
               color={item.color}
+              navigation={navigation}
             />
           </View>
         )}
