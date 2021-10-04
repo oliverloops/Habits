@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 
 const Form = () => {
+  const [state, setState] = useState("");
+
+  const updateText = (value) => {
+    setState(value);
+  };
+
   return (
     <>
       <View style={styles.main}>
+        <Text>{state}</Text>
         <Text style={{ fontSize: 14, color: "gray" }}>TITULO</Text>
         <View style={{ marginTop: 15 }}>
-          <TextInput style={styles.input} />
+          <TextInput
+            onChangeText={(text) => {
+              updateText(text);
+            }}
+            style={styles.input}
+          />
         </View>
         <Text style={{ marginTop: 20, fontSize: 14, color: "gray" }}>
           DESCRIPCIÓN

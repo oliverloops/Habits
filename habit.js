@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 const HabitScreen = ({ route, navigation }) => {
-  const { pageTitle, time, icon, color } = route.params;
+  const { pageTitle, desc, time, icon, color } = route.params;
   navigation.setOptions({ title: pageTitle });
 
   return (
@@ -10,6 +10,7 @@ const HabitScreen = ({ route, navigation }) => {
       <View style={styles.pageContent}>
         <HabitContainer
           title={pageTitle}
+          desc={desc}
           time={time}
           icon={icon}
           color={color}
@@ -22,7 +23,7 @@ const HabitScreen = ({ route, navigation }) => {
   );
 };
 
-const HabitContainer = ({ title, time, icon, color }) => {
+const HabitContainer = ({ title, desc, time, icon, color }) => {
   return (
     <>
       <View style={[styles.emojiBox, { backgroundColor: color }]}>
@@ -38,7 +39,7 @@ const HabitContainer = ({ title, time, icon, color }) => {
         </Text>
       </View>
       <View style={styles.habitBox}>
-        <View style={{ height: 120, width: 200, padding: 20 }}>
+        <View style={{ height: 120, width: 250, padding: 20 }}>
           <Text
             style={{
               color: color,
@@ -48,6 +49,9 @@ const HabitContainer = ({ title, time, icon, color }) => {
             }}
           >
             {title}
+          </Text>
+          <Text style={{ height: 120, width: 200, paddingTop: 10 }}>
+            {desc}
           </Text>
         </View>
         <Text style={styles.subtitleBox}>

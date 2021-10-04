@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import { View, Text, StyleSheet, Button, Image, FlatList } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -10,47 +10,89 @@ import HabitScreen from "./habit";
 import Form from "./form";
 
 const Stack = createNativeStackNavigator();
+//Context API
+export const habitContext = createContext([]);
+
+let values = [
+  {
+    title: "Escalada",
+    desc: "Escalar los domingos en la mañana",
+    days: 5,
+    icon: "⛰️",
+    color: "hsl(97, 96%, 84%)",
+  },
+  {
+    title: "Lectura Diaria",
+    desc: "Leer 1 hora antes de dormir",
+    days: 9,
+    icon: "📖",
+    color: "hsl(264, 85%, 85%)",
+  },
+  {
+    title: "Realizar Pilates",
+    desc: "Ejercitarse por las tardes",
+    days: 12,
+    icon: "💪",
+    color: "hsl(201, 90%, 77%)",
+  },
+  {
+    title: "Fránces",
+    desc: "Dedicar 1 hora a estudiar fránces",
+    days: 4,
+    icon: "🇫🇷",
+    color: "hsl(56, 85%, 75%)",
+  },
+  {
+    title: "Cocinar",
+    desc: "Prepar mi propia comida",
+    days: 7,
+    icon: "🥗",
+    color: "hsl(299, 69%, 84%)",
+  },
+];
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Home"
-        style={{ backgroundColor: "transparent" }}
-      >
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            title: "Actividades",
-            headerStyle: {
-              backgroundColor: "transparent",
-            },
-            headerTintColor: "transparent",
-          }}
-        />
-        <Stack.Screen
-          name="Habit"
-          component={HabitScreen}
-          options={{
-            title: "Actividad",
-            headerStyle: {
-              backgroundColor: "hsl(357, 5%, 97%)",
-            },
-          }}
-        />
-        <Stack.Screen
-          name="Form"
-          component={Form}
-          options={{
-            title: "Añadir Hábito",
-            headerStyle: {
-              backgroundColor: "hsl(357, 5%, 97%)",
-            },
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <habitContext.Provider value={values}>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Home"
+          style={{ backgroundColor: "transparent" }}
+        >
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{
+              title: "Actividades",
+              headerStyle: {
+                backgroundColor: "transparent",
+              },
+              headerTintColor: "transparent",
+            }}
+          />
+          <Stack.Screen
+            name="Habit"
+            component={HabitScreen}
+            options={{
+              title: "Actividad",
+              headerStyle: {
+                backgroundColor: "hsl(357, 5%, 97%)",
+              },
+            }}
+          />
+          <Stack.Screen
+            name="Form"
+            component={Form}
+            options={{
+              title: "Añadir Hábito",
+              headerStyle: {
+                backgroundColor: "hsl(357, 5%, 97%)",
+              },
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </habitContext.Provider>
   );
 };
 
@@ -88,48 +130,18 @@ const HabitButton = ({ navigation }) => {
 };
 
 const CardsContainer = ({ navigation }) => {
-  let habits = [
-    {
-      title: "Escalada",
-      days: 5,
-      icon: "⛰️",
-      color: "hsl(97, 96%, 84%)",
-    },
-    {
-      title: "Lectura Diaria",
-      days: 9,
-      icon: "📖",
-      color: "hsl(264, 85%, 85%)",
-    },
-    {
-      title: "Realizar Pilates",
-      days: 12,
-      icon: "💪",
-      color: "hsl(201, 90%, 77%)",
-    },
-    {
-      title: "Fránces",
-      days: 4,
-      icon: "🇫🇷",
-      color: "hsl(56, 85%, 75%)",
-    },
-    {
-      title: "Cocinar",
-      days: 7,
-      icon: "🥗",
-      color: "hsl(299, 69%, 84%)",
-    },
-  ];
+  const consumer = useContext(habitContext);
 
   return (
     <View style={styles.habitCardsContainer}>
       <FlatList
         horizontal={true}
-        data={habits}
+        data={consumer}
         renderItem={({ item, id }) => (
           <View style={{ marginTop: 10 }} key={id}>
             <HabitCard
               title={item.title}
+              desc={item.desc}
               days={item.days}
               icon={item.icon}
               color={item.color}

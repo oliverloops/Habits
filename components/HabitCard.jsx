@@ -1,10 +1,11 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-const HabitCard = ({ title, days, icon, color, navigation }) => {
+const HabitCard = ({ title, desc, days, icon, color, navigation }) => {
   const navigate = () => {
     navigation.navigate("Habit", {
       pageTitle: title,
+      desc: desc,
       time: days,
       icon: icon,
       color: color,
